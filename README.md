@@ -173,11 +173,11 @@ Importing CSS files is supported via `import "./foo.css"`. By default, generated
 
 ```js
 // with the default external CSS:
-import './foo.css';  // generates a minified .css file in the output directory
+import './foo.css'; // generates a minified .css file in the output directory
 
 // with `microbundle --css inline`:
 import css from './foo.css';
-console.log(css);  // the generated minified stylesheet
+console.log(css); // the generated minified stylesheet
 ```
 
 **CSS Modules:** CSS files with names ending in `.module.css` are treated as a [CSS Modules](https://github.com/css-modules/css-modules).
@@ -235,11 +235,11 @@ It's also possible to configure repeatable short names for each mangled property
 
 The `--define` option can be used to inject or replace build-time constants when bundling. In addition to injecting string or number constants, prefixing the define name with `@` allows injecting JavaScript expressions.
 
-| Build command | Source code | Output |
-|---------------|-------------|--------|
-`microbundle --define VERSION=2` | `console.log(VERSION)` | `console.log(2)`
-`microbundle --define API_KEY='abc123'` | `console.log(API_KEY)` | `console.log("abc123")`
-`microbundle --define @assign=Object.assign` | `assign(a, b)` | `Object.assign(a, b)`
+| Build command                                | Source code            | Output                  |
+| -------------------------------------------- | ---------------------- | ----------------------- |
+| `microbundle --define VERSION=2`             | `console.log(VERSION)` | `console.log(2)`        |
+| `microbundle --define API_KEY='abc123'`      | `console.log(API_KEY)` | `console.log("abc123")` |
+| `microbundle --define @assign=Object.assign` | `assign(a, b)`         | `Object.assign(a, b)`   |
 
 ### All CLI Options <a name="options"></a>
 
@@ -279,12 +279,14 @@ Options
 	--tsconfig         Specify the path to a custom tsconfig.json
 	--css              Where to output CSS: "inline" or "external" (default: "external")
 	--css-modules      Configures .css to be treated as modules (default: null)
+	--inject           Injects CSS into <head>, it's always false when "--css external" is set (default: false)
 	-h, --help         Displays this message
 
 Examples
 	$ microbundle build --globals react=React,jquery=$
 	$ microbundle build --define API_KEY=1234
 	$ microbundle build --alias react=preact/compat
+	$ microbundle build --css inline --inject true
 	$ microbundle watch --no-sourcemap # don't generate sourcemaps
 	$ microbundle build --tsconfig tsconfig.build.json
 ```

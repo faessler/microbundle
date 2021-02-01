@@ -63,6 +63,12 @@ export default handler => {
 			null,
 		)
 		.example("microbundle --no-sourcemap # don't generate sourcemaps")
+		.option(
+			'--inject',
+			'Injects CSS into <head>, it\'s always false when "--css external" is set',
+			'false',
+		)
+		.example('microbundle build --css inline --inject true')
 		.option('--raw', 'Show raw byte size', false)
 		.option(
 			'--jsx',
