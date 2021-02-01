@@ -443,8 +443,6 @@ function createConfig(options, entry, format, writeMeta) {
 						plugins: [autoprefixer()],
 						autoModules: shouldCssModules(options),
 						modules: cssModulesConfig(options),
-						// only write out CSS for the first bundle (avoids pointless extra files):
-						inject: false,
 						extract: options.css !== 'inline',
 						minimize: options.compress,
 						sourceMap: options.sourcemap && options.css !== 'inline',
